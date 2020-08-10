@@ -1,4 +1,4 @@
-package com.vastika.bank_app.Util;
+package com.vastika.bank_app.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class DBUtil {
 
 	
-	public static final String URL= "jdbc:mysql://localhost:3306?serverTimezone=UTC";
+	public static final String URL= "jdbc:mysql://localhost:3306/bank_account?serverTimezone=UTC";
 	public static final String USER_NAME ="root";
 	public static final String PASSWORD ="vastika1";
 	
