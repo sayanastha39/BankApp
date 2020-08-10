@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-	
-	
-	public static final String URL= "bank-app.cylb9hvtwc8w.us-east-2.rds.amazonaws.com";
-	//"jdbc:mysql://localhost:3306/user_db?serverTimezone=UTC";
+
+	public static final String URL= "jdbc:mysql://bank-app.cylb9hvtwc8w.us-east-2.rds.amazonaws.com/bank_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	public static final String USER_NAME= "root";
 	public static final String PASSWORD= "root1234";
 	
