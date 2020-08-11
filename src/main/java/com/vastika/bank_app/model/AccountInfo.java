@@ -1,5 +1,7 @@
 package com.vastika.bank_app.model;
 
+import java.util.Random;
+
 /**
  * @author : Nabin Neupane
  *
@@ -7,18 +9,28 @@ package com.vastika.bank_app.model;
  * @date:	 Aug 10, 2020 
  **/
 public class AccountInfo {
-	private String account_name;
+	
+	
+	
+	private String accountName;
 	private String address; 
-	private long mobile_no;
+	private long mobileNo;
 	private int id; 
-	private long passport_number;
+	private String UniqueIdType;
 	
 	
-	public String getAccount_name() {
-		return account_name;
+	
+	public String getAccountName() {
+		return accountName;
 	}
-	public void setAccount_name(String account_name) {
-		this.account_name = account_name;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+	public long getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(long mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 	public String getAddress() {
 		return address;
@@ -26,23 +38,20 @@ public class AccountInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getMobile_no() {
-		return mobile_no;
-	}
-	public void setMobile_no(long mobile_no) {
-		this.mobile_no = mobile_no;
-	}
+	
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId() {
+		
+		 int random = 1000;
+		this.id = random++;
 	}
-	public long getPassport_number() {
-		return passport_number;
+	public String getUniqueIdType() {
+		return UniqueIdType;
 	}
-	public void setPassport_number(long passport_number) {
-		this.passport_number = passport_number;
-	} 
-
+	public void setUniqueIdType(String uniqueIdType) {
+		UniqueIdType = uniqueIdType;
+	}
+	
 }
