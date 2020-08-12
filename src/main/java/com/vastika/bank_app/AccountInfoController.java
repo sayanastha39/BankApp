@@ -1,6 +1,8 @@
 package com.vastika.bank_app;
 
 import java.util.Scanner;
+
+import com.vastika.bank_app.model.AccountBalance;
 import com.vastika.bank_app.model.AccountInfo;
 import com.vastika.bank_app.service.*;
 
@@ -31,6 +33,8 @@ public class AccountInfoController {
 	
     public static void main( String[] args ) {
     	AccountInfoService accountInfoService = new AccountInfoServiceImpl();
+    	AccountMethodService accountMethodService = new AccountMethodImplService();
+    	
     	String decision = "";
     	 Scanner reader  =  new Scanner(System.in);
     	 
@@ -51,11 +55,42 @@ public class AccountInfoController {
         		 break;
         		 
         	 case "withdraw":
+        		 AccountBalance accountBalance1 = new AccountBalance();
         		 
+        		 System.out.print("Enter your id: ");
+        		 int id1 = reader.nextInt();
+        		 accountBalance1.setAccountInfoId(id1);
+        		 
+        		 System.out.print("Enter the balance to withdraw: ");
+        		 double withdraw = reader.nextDouble();
+        		 accountBalance1.setWithdrawAmount(withdraw);
+        		 
+        		 if(withdraw<= accountBalance1.getBalance()) {
+        			 double balance = accountBalance1.getBalance()- withdraw;
+        			 accountBalance1.setBalance(balance);
+        			 System.out.println("Withdraw sucessfull");
+        		 }
+        		 else 
+      	    		System.out.println("Not changed.....");
         		 break;
         		 
         	 case "deposit":
+        		 AccountBalance accountBalance2= new AccountBalance();
+        		 System.out.print("Enter your id: ");
+        		 int id2 = reader.nextInt();
+        		 accountBalance2.setAccountInfoId(id2);
         		 
+        		 System.out.print("Enter the balance to deposit: ");
+        		 double balance = reader.nextDouble(); 
+        		 accountBalance2.setDepositAmount(balance);
+        		 
+        		 
+        		 int deposit = accountMethodService.deposit(accountBalance2);
+        		 
+        		 if(deposit >=1)
+     	    		System.out.println("deposit balance changed in database");
+     	    	else 
+     	    		System.out.println("Not changed.....");
         		 break;
         		 
         	default:

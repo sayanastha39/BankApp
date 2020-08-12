@@ -2,26 +2,27 @@ package com.vastika.bank_app.model;
 
 public class AccountBalance {
 	
-	private int depositAmount;
-	private int withdrawAmount;
-	private int balance;
+	private double depositAmount;
+	private double withdrawAmount;
+	private double balance;
 	private int accountInfoId;
-	public int getDepositAmount() {
+	
+	public double getDepositAmount() {
 		return depositAmount;
 	}
-	public void setDepositAmount(int depositAmount) {
+	public void setDepositAmount(double depositAmount) {
 		this.depositAmount = depositAmount;
 	}
-	public int getWithdrawAmount() {
+	public double getWithdrawAmount() {
 		return withdrawAmount;
 	}
-	public void setWithdrawAmount(int withdrawAmount) {
+	public void setWithdrawAmount(double withdrawAmount) {
 		this.withdrawAmount = withdrawAmount;
 	}
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	public int getAccountInfoId() {
