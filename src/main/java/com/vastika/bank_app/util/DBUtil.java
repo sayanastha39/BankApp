@@ -13,10 +13,9 @@ import java.sql.SQLException;
 public class DBUtil {
 
 	
-	
-	public static final String URL= "";
-	public static final String USER_NAME ="";
-	public static final String PASSWORD ="";
+	public static final String URL= "jdbc:mysql://localhost:3306/bank_account?serverTimezone=UTC";
+	public static final String USER_NAME ="root";
+	public static final String PASSWORD ="vastika1";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		

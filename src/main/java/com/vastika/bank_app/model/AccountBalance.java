@@ -12,13 +12,13 @@ public class AccountBalance {
 	private double depositAmount;
 	private double withdrawAmount;
 	
-	private int balance;
+	private double balance;
 	private int accountInfoId;
 	
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	public int getAccountInfoId() {

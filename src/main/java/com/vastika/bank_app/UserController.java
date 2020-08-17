@@ -15,16 +15,15 @@ import com.vastika.bank_app.service.AccountInfoServiceImpl;
  */
 public class UserController 
 {
+	
+	public static int id= 1000;
+	
+	
 	public static AccountInfo getUserData(String type, Scanner sc) {
 		
 		AccountInfo account_setup= new AccountInfo();
 		
-		
-//		 if(type.contentEquals("update")) {
-//			 System.out.print("\n\t Enter id:  ");
-//			 int id = sc.nextInt();
-//			 account_setup.setId(id);
-//		 }
+		account_setup.setId(id++);
 		 System.out.print("\n\t Enter your name: ");
 	    	String name = sc.nextLine(); 
 	    		account_setup.setAccountName(name);
@@ -48,12 +47,26 @@ public class UserController
 		return account_setup;
 	}
 	
+	public static double returnBalance(Scanner sc, AccountBalance newbalance)
+	{
+		 System.out.print("Enter your id: ");
+		 int id = sc.nextInt();
+		 
+		 newbalance.setAccountInfoId(id);
+		 
+		 System.out.print("Enter the balance to deposit/Withdraw: ");
+		 double amt = sc.nextDouble(); 
+		
+		return amt; 
+	}
+	
     public static void main( String[] args )
     {
       
     	
     	AccountInfoService info =  new AccountInfoServiceImpl();
     	AccountBalanceService balance = new AccountBalanceServiceImpl();
+    	 AccountBalance newBalance = new AccountBalance();
     		
     	String decision="";
     	
@@ -84,23 +97,24 @@ public class UserController
         		 break;
         		 
         	 case "withdraw":
+        		
+        		 double withdrawAmount = returnBalance(sc,newBalance); 
+        		 newBalance.setWithdrawAmount(withdrawAmount);
+        		 double withdrawSaved = balance.depositeAmount(newBalance);
+        		 
+        		 if(withdrawSaved >=1 )
+        			 	System.out.println("Withdraw balance changed in database");
+        		 else 
+        			 System.out.println("Not changed.......");
         		 
         		 break;
         		 
         	 case "deposit":
         		 
-        		 AccountBalance newbalance = new AccountBalance(); 
+        		double depositAmount = returnBalance(sc,newBalance);
         		 
-        		 System.out.print("Enter your id: ");
-        		 int id = sc.nextInt();
-        		 
-        		 newbalance.setAccountInfoId(id);
-        		 
-        		 System.out.print("Enter the balance to deposit: ");
-        		 double amt = sc.nextDouble(); 
-        		 
-        		 newbalance.setDepositAmount(amt);
-        		 int depoSaved = balance.depositeAmount(newbalance);
+        		 newBalance.setDepositAmount(depositAmount);
+        		 double depoSaved = balance.depositeAmount(newBalance);
         		 
         		 if(depoSaved >=1)
      	    		System.out.println("deposit balance changed in database");

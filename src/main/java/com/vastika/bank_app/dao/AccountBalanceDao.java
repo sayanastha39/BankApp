@@ -10,7 +10,9 @@ import com.vastika.bank_app.model.AccountBalance;
  **/
 public interface AccountBalanceDao {
 
-	int depositeAmount(AccountBalance balance);
+	double depositeAmount(AccountBalance balance);
 	
-	int withdrawAmount(AccountBalance balance); 
+	double withdrawAmount(AccountBalance balance); 
+	
+	
 }

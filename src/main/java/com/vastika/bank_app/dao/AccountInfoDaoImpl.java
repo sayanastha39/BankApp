@@ -27,12 +27,14 @@ public class AccountInfoDaoImpl implements AccountInfoDao{
 
 		try (Connection con = DBUtil.getConnection();
 				PreparedStatement ps = con.prepareStatement(QueryUtil.INSERT_SQL);
-						PreparedStatement pss = con.prepareStatement(QueryUtil.Insert_SQL_DB))
+			
+			)
 		{
-				ps.setString(1, info.getAccountName());
-				ps.setString(2, info.getAddress());
-				ps.setLong(3, info.getMobileNo());
-				ps.setString(4, info.getUniqueIdType());
+				ps.setInt(1, info.getId());
+				ps.setString(2, info.getAccountName());
+				ps.setString(3, info.getAddress());
+				ps.setLong(4, info.getMobileNo());
+				ps.setString(5, info.getUniqueIdType());
 				
 				
 				saved = ps.executeUpdate();

@@ -14,14 +14,19 @@ public class AccountBalanceServiceImpl  implements AccountBalanceService{
 
 	
 	AccountBalanceDao accountBalance = new AccountBalanceDaoImpl();
+	AccountBalance  accBalance = new AccountBalance(); 
 	@Override
-	public int depositeAmount(AccountBalance balance) {
+	public double depositeAmount(AccountBalance balance) {
 		// TODO Auto-generated method stub
+		
+		double total = accBalance.getBalance() + accBalance.getDepositAmount();
+		accBalance.setBalance(total);
+		accBalance.setWithdrawAmount(0);
 		return accountBalance.depositeAmount(balance);
 	}
 
 	@Override
-	public int withdrawAmount(AccountBalance balance) {
+	public double withdrawAmount(AccountBalance balance) {
 		// TODO Auto-generated method stub
 		return accountBalance.withdrawAmount(balance);
 	}

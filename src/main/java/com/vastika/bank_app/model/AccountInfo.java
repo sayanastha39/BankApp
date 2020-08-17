@@ -42,10 +42,10 @@ public class AccountInfo {
 	public int getId() {
 		return id;
 	}
-	public void setId() {
+	public void setId(int id) {
 		
-		 int random = 1000;
-		this.id = random++;
+		
+		this.id = id;
 	}
 	public String getUniqueIdType() {
 		return UniqueIdType;

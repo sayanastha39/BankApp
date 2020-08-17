@@ -2,6 +2,7 @@ package com.vastika.bank_app.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.vastika.bank_app.model.AccountBalance;
@@ -17,16 +18,19 @@ import com.vastika.bank_app.util.QueryUtil;
 public class AccountBalanceDaoImpl implements AccountBalanceDao{
 
 	@Override
-	public int depositeAmount(AccountBalance balance) {
+	public double depositeAmount(AccountBalance balance) {
 		
 		int saved=0;
 
 		try (Connection con = DBUtil.getConnection();
 				PreparedStatement ps = con.prepareStatement(QueryUtil.DEPOSIT_AMOUNT_SQL))
 		{
-				ps.setDouble(1,balance.getDepositAmount());
+			ps.setInt(1, balance.getAccountInfoId());
+				ps.setDouble(2,balance.getDepositAmount());
+				ps.setDouble(3, balance.getWithdrawAmount());
+			
+				ps.setDouble(4,  balance.getBalance());
 				
-				ps.setInt(2, balance.getAccountInfoId());
 				
 				saved = ps.executeUpdate();
 		}
@@ -40,14 +44,19 @@ public class AccountBalanceDaoImpl implements AccountBalanceDao{
 	}
 
 	@Override
-	public int withdrawAmount(AccountBalance balance) {
+	public double withdrawAmount(AccountBalance balance) {
 		int saved=0;
 
+
 		try (Connection con = DBUtil.getConnection();
-				PreparedStatement ps = con.prepareStatement(QueryUtil.DEPOSIT_AMOUNT_SQL))
+				PreparedStatement ps = con.prepareStatement(QueryUtil.WITHDRAW_AMOUNT_SQL))
 		{
-				ps.setDouble(1,balance.getWithdrawAmount());
-				ps.setInt(2, balance.getAccountInfoId());
+			ps.setInt(1, balance.getAccountInfoId());
+				ps.setDouble(2,balance.getDepositAmount());
+				ps.setDouble(3, balance.getWithdrawAmount());
+			
+				ps.setDouble(4,  balance.getBalance());
+				
 				
 				saved = ps.executeUpdate();
 		}
@@ -57,7 +66,11 @@ public class AccountBalanceDaoImpl implements AccountBalanceDao{
 		}
 	
 		return saved;
+	
+		
 	}
+
+	
 
 	
 	
